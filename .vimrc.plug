@@ -1,7 +1,12 @@
 call plug#begin('~/.vim/plugged')
 
-Plug 'vim-airline/vim-airline-themes'
-Plug 'vim-airline/vim-airline'
+"Plug 'vim-airline/vim-airline-themes'
+"Plug 'vim-airline/vim-airline'
 Plug 'morhetz/gruvbox'
+Plug 'arcticicestudio/nord-vim', { 'on':  'NERDTreeToggle' }
+Plug 'scrooloose/nerdtree'
+Plug 'itchyny/lightline.vim'
+Plug 'tpope/vim-fugitive'
+Plug 'valloric/youcompleteme'
 
 call plug#end()
