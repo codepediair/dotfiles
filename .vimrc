@@ -9,10 +9,15 @@
 
 
 set nocompatible
-set number
+set cursorline
+set relativenumber 
 set wrap
+set autoindent
+syntax enable
+set mouse=a
 set encoding=utf-8
 set laststatus=2
+set history=1000
 
 "call the .vimrc.plug file
 if filereadable(expand("~/.vimrc.plug"))
