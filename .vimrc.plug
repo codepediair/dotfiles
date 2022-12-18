@@ -6,5 +6,6 @@ Plug 'arcticicestudio/nord-vim', { 'on':  'NERDTreeToggle' }
 Plug 'scrooloose/nerdtree'
 Plug 'itchyny/lightline.vim'
 Plug 'tpope/vim-fugitive'
+Plug 'valloric/youcompleteme'
 
 call plug#end()
