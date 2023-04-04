@@ -24,7 +24,10 @@ if filereadable(expand("~/.vimrc.plug"))
 	source ~/.vimrc.plug
 endif
 
-colorscheme nord
+let g:gruvbox_contrast_dark='hard'
+set background=drak
+colorscheme gruvbox
+hi Normal guibg=NONE ctermbg=NONE
 
 " config airline
 "let g:airline#extensions#tabline#enabled = 1
@@ -33,7 +36,7 @@ colorscheme nord
 
 " config lightline
 let g:lightline = {
-			\'colorscheme': 'nord',
+			\'colorscheme': 'gruvbox',
 			\'active':{
 			\	'left':[['mode','paste'],
 			\		['gitbranch', 'readonly', 'filename', 'modified']]
