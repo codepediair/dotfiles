@@ -25,7 +25,7 @@ if filereadable(expand("~/.vimrc.plug"))
 endif
 
 let g:gruvbox_contrast_dark='hard'
-set background=drak
+set background=dark
 colorscheme gruvbox
 hi Normal guibg=NONE ctermbg=NONE
 
