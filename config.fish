@@ -1,4 +1,3 @@
-set --universal ayu_variant dark && ayu_load_theme
 ## SASHIMI PROPMT ##
 function fish_prompt
   set -l last_status $status
