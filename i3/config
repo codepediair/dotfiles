@@ -65,8 +65,7 @@ bindsym $mod+Shift+9 move container to workspace 9
 #####################################################################################################################
 
 # start dmenu
-bindsym $mod+d exec --no-startup-id dmenu_run -i -nb '#1f222d' -nf '#81a1c1' -sb '#81a1c1' -sf '#1f222d' -fn 'OperatorMonoBook:bold:pixelsize=18'
-
+bindsym $mod+d exec --no-startup-id dmenu_run -i -l 3 -fn "FiraCode-9" -nb "#2e3440" -nf "#d8dee9" -sb "#4c566a" -sf "#d8dee9" -p "Run"
 
 
 #####################################################################################################################
@@ -262,6 +261,8 @@ bindsym $mod+Shift+Return exec --no-startup-id nemo;focus
 
 bindsym $mod+z exec --no-startup-id morc_menu
 
+bindsym $mod+m exec emacsclient -c -a 'emacs'
+
 
 
 #####################################################################################################################
@@ -367,7 +368,7 @@ mode "$mode_gaps_outer" {
 #####################################################################################################################
 
 #if you want transparency on non-focused windows, ...
-#exec_always --no-startup-id picom --config ~/.config/i3/picom.conf
+exec_always --no-startup-id picom --config ~/.config/i3/picom.conf
 exec_always --no-startup-id nitrogen --restore
 #exec_always --no-startup-id ~/.config/i3/scripts/mouse.sh
 #exec --no-startup-id feh --no-fehbg --bg-fill '$HOME/Downloads/peakpx.jpg'
@@ -387,6 +388,7 @@ bar {
 	status_command i3status
     tray_padding 1
     strip_workspace_numbers yes
+    separator_symbol "|"
 
     colors {
             separator  #1f222d
@@ -419,8 +421,7 @@ bar {
 exec xset r rate 300 50 &
 
 # keypad language
-exec_always "setxkbmap -model pc104 -layout us,ir -variant ,, -option grp:alt_shift_toggle"
-
+exec_always --no-startup-id "setxkbmap -model pc104 -layout us,ir -variant ,, -option grp:alt_shift_toggle"
 #####################################################################################################################
 #####################################################################################################################
 #####################################################################################################################
