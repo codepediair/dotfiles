@@ -12,27 +12,18 @@
    -- trayer
    -- 'dtos-local-bin' (from dtos-core-repo)
 
-Config { font            = "JetBrains Mono NF 9"
+Config { font            = "Mononoki NF 9"
        , additionalFonts = [ "Mononoki 11"
                            , "Font Awesome 6 Free Solid 12"
                            , "Font Awesome 6 Brands 12"
                            ]
-       	, bgColor      = "#282c34"
-       	, fgColor      = "#bbc2cf"
-       	-- Position TopSize and BottomSize take 3 arguments:
-       	--   an alignment parameter (L/R/C) for Left, Right or Center.
-       	--   an integer for the percentage width, so 100 would be 100%.
-       	--   an integer for the minimum pixel height for xmobar, so 24 would force a height of at least 24 pixels.
-       	--   NOTE: The height should be the same as the trayer (system tray) height.
+       	, bgColor      = "#1a1b26"
+       	, fgColor      = "#c0caf5"
        	, position       = TopSize L 100 24
 	, border =       NoBorder
-   	--, borderColor =  "#000000"--"#646464"
-   	-- , alpha = 200 --200  --for transparency
-   	, iconRoot = "/home/max/.config/xmobar/xpm/" -- default: "."
    	, sepChar =  "%"   -- delineator between plugin names and straight text
    	, alignSep = "}{"  -- separator between left-right alignment
-   	-- , template = " %multicpu% | %coretemp% | %memory% | %dynnetwork% } %StdinReader% { %LFSB% | %date% "
-   	, template = " <fc=#000000><icon=haskell_20.xpm/></fc> | %UnsafeStdinReader% }{  <box type=Bottom width=2 mb=2 color=#98be65><fc=#98be65>%cpu%</fc></box> | %coretemp% | %memory% | %dynnetwork% | %OIHH% | %date% "
+   	, template = " <action=`scrot`><fc=#7dcfff>Code Pedia</fc></action>  <fc=#666666>|</fc> %UnsafeStdinReader%}{%cpu% | %coretemp% | %memory% | %dynnetwork% | %OIHH% | %date% "
 
    -- general behavior
    	, lowerOnStart =     False    -- send to bottom of window stack on start
@@ -46,14 +37,14 @@ Config { font            = "JetBrains Mono NF 9"
    	, commands =
 
         -- weather monitor
-        [ Run Weather "OIHH" [ "--template", "󰥗 : <skyCondition> - <station> - <fc=#ffd166><tempC></fc>°C"
+        [ Run Weather "OIHH" [ "--template", "󰥗 : <skyCondition> - <station> - <fc=#7aa2f7><tempC></fc>°C"
                              ] 36000
 
         -- network activity monitor (dynamic interface resolution)
         , Run DynNetwork     [ "--template" , "󰛳:  <tx>kB/s|  <rx>kB/s"
                              , "--Low"      , "1000"       -- units: B/s
                              , "--High"     , "5000"       -- units: B/s
-                             , "--low"      , "#36c692"
+                             , "--low"      , "#9ece6a"
                              , "--normal"   , "#d9995e"
                              , "--high"     , "#a63936"
                              ] 10
@@ -62,8 +53,8 @@ Config { font            = "JetBrains Mono NF 9"
         , Run Cpu            [ "--template" , ": <total>%"
                              , "--Low"      , "50"         -- units: %
                              , "--High"     , "85"         -- units: %
-                             , "--low"      , "#36c692"
-                             , "--normal"   , "#d9995e"
+                             , "--low"      , "#9ece6a"
+                             , "--normal"   , "#e0af68"
                              , "--high"     , "#a63936"
                              ] 10
         -- cpu core temperature monitor
@@ -79,14 +70,14 @@ Config { font            = "JetBrains Mono NF 9"
         , Run Memory         [ "--template" ," : <usedratio>%"
                              , "--Low"      , "20"        -- units: %
                              , "--High"     , "90"        -- units: %
-                             , "--low"      , "#36c692"
-                             , "--normal"   , "#d9995e"
-                             , "--high"     , "#a63936"
+                             , "--low"      , "#9ece6a"
+                             , "--normal"   , "#e0af68"
+                             , "--high"     , "#f7768e"
                              ] 10
 
         -- time and date indicator
         --   (%F = y-m-d date, %a = day of week, %T = h:m:s time)
-        , Run Date           "<fc=#f3e2ce>%F (%a) %T</fc>" "date" 10
+        , Run Date           "<fc=#c0caf5>%F (%a) %T</fc>" "date" 10
 
 		, Run UnsafeStdinReader
         ]

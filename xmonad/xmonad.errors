@@ -1,0 +1,16 @@
+$ ghc --make xmonad.hs -i -ilib -fforce-recomp -main-is main -dynamic -v0 -outputdir /home/mahdi/.xmonad/build-x86_64-linux -o /home/mahdi/.xmonad/xmonad-x86_64-linux
+
+xmonad.hs:321:6: warning: [-Wtabs]
+    Tab character found here.
+    Please use spaces instead.
+    |
+321 |         , ("M-S-<Return>", spawn "dmenu_run -i -p \"Run: \"") -- Dmenu
+    |      ^^^
+
+xmonad.hs:403:36: warning: [-Wdeprecations]
+    In the use of ‘docksEventHook’
+    (imported from XMonad.Hooks.ManageDocks):
+    Deprecated: "Use docks instead."
+    |
+403 |                                <+> docksEventHook
+    |                                    ^^^^^^^^^^^^^^
