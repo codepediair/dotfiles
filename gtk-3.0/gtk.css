@@ -1,0 +1,14 @@
+.xfce4-panel widget grid button.flat.toggle:hover { 
+  font-family: 'Mononoki Nerd Font Bold'; 
+  font-size: 16px;
+}
+.xfce4-panel widget grid button.flat.toggle:checked { 
+  font-family: 'Mononoki Nerd Font Bold';
+  font-size: 16px;
+  border-bottom: 2px solid white;
+  padding: 5px;
+}
+
+VteTerminal, vte-terminal {
+  padding: 16px;
+}

@@ -25,7 +25,7 @@ set $down k
 set $left j
 set $right semicolon
 
-font pango:FiraCode 0
+font pango:Mononoki Nerd Font 0
 
 
 
@@ -65,7 +65,7 @@ bindsym $mod+Shift+9 move container to workspace 9
 #####################################################################################################################
 
 # start dmenu
-bindsym $mod+d exec --no-startup-id dmenu_run -i -l 3 -fn "FiraCode-9" -nb "#2e3440" -nf "#d8dee9" -sb "#4c566a" -sf "#d8dee9" -p "Run"
+bindsym $mod+d exec --no-startup-id rofi -show drun
 
 
 #####################################################################################################################
@@ -309,7 +309,7 @@ bindsym $mod+i bar mode invisible
 #################                          i3 gaps next                                             #################
 #####################################################################################################################
 
-for_window [class="^.*"] border pixel 1
+for_window [class="^.*"] border pixel 2
 gaps inner 10
 gaps outer 1
 #smart_gaps on
@@ -368,10 +368,11 @@ mode "$mode_gaps_outer" {
 #####################################################################################################################
 
 #if you want transparency on non-focused windows, ...
-exec_always --no-startup-id picom --config ~/.config/i3/picom.conf
-exec_always --no-startup-id nitrogen --restore
+exec_always --no-startup-id picom --config ~/.config/picom/picom.conf
+# exec_always --no-startup-id nitrogen --restore
+exec_always --no-startup-id xrandr --output DVI-I-1 --off --output HDMI-1 --primary --mode 1920x1080 --pos 0x360 --rotate normal --output VGA-1 --mode 1440x900 --pos 1920x0 --rotate left
 #exec_always --no-startup-id ~/.config/i3/scripts/mouse.sh
-#exec --no-startup-id feh --no-fehbg --bg-fill '$HOME/Downloads/peakpx.jpg'
+exec_always --no-startup-id feh --no-fehbg --bg-fill --randomize $HOME/.wallpapers/rosepine/*
 
 #####################################################################################################################
 #####################################################################################################################
@@ -381,40 +382,81 @@ exec_always --no-startup-id nitrogen --restore
 #####################################################################################################################
 #####################################################################################################################
 
+### BODERS ###
+
+
+# set primary pine rose colorscheme colors
+set $base           #191724
+set $surface        #1f1d2e
+set $overlay        #26233a
+set $muted          #6e6a86
+set $subtle         #908caa
+set $text           #e0def4
+set $love           #eb6f92
+set $gold           #f6c177
+set $rose           #ebbcba
+set $pine           #31748f
+set $foam           #9ccfd8
+set $iris           #c4a7e7
+set $highlightlow   #21202e
+set $highlightmed   #403d52
+set $highlighthigh  #524f67
+
 bar {
-   	height 15
-	position top
-    font pango:FiraCode 8
-	status_command i3status
+    output HDMI-1
+   	height 22
+	  position top
+    font pango:Mononoki Nerd Font 9
+	  status_command SCRIPT_DIR=~/.config/i3blocks/scripts i3blocks
     tray_padding 1
     strip_workspace_numbers yes
     separator_symbol "|"
 
     colors {
-            separator  #1f222d
-            background #1f222d
-            statusline #81a1c1
+            separator  $highlightmed
+            background $base
+            statusline $rose
 
-            #                   border  background text
-            focused_workspace  #1f222d #1f222d    #81a1c1
-            active_workspace   #1f222d #252936    #5e81ac
-            inactive_workspace #1f222d #1f222d    #4c566a
-            urgent_workspace   #1f222d #1f222d    #ee829f
-            binding_mode       #1f222d #81a1c1    #2e3440
+       #                    border    backgr. text
+        focused_workspace    $rose    $pine   $base
+        inactive_workspace   $text    $base   $text
+        active_workspace     $overlay $muted  $base
+        urgent_workspace     $love    $love   $base
     }
 }
 
-    ##START THEMING WM
+bar{
+    output VGA-1
+   	height 22
+	  position top
+	  status_command MYSCRIPT=~/.config/i3blocks/mybar/scripts/ i3blocks
+    font pango:Mononoki Nerd Font 9
+	  # status_command i3status
+    tray_padding 1
+    strip_workspace_numbers yes
+    separator_symbol "|"
 
-    # Window color settings
-    # class                 border  backgr. text    indicator
-    client.focused          #81a1c1 #81a1c1 #ffffff #81a1c1
-    client.unfocused        #2e3440 #1f222d #888888 #1f222d
-    client.focused_inactive #2e3440 #1f222d #888888 #1f222d
-    client.placeholder      #2e3440 #1f222d #888888 #1f222d
-    client.urgent           #900000 #900000 #ffffff #900000
+    colors {
+            separator  $highlightmed
+            background $base
+            statusline $rose
 
-    client.background       #242424
+       #                    border    backgr. text
+        focused_workspace    $rose    $pine   $base
+        inactive_workspace   $text    $base   $text
+        active_workspace     $overlay $muted  $base
+        urgent_workspace     $love    $love   $base
+    }
+
+
+}
+# target                 title     bg    text   indicator  border
+client.focused           $rose     $base $text  $rose      $rose
+client.focused_inactive  $text     $base $text  $subtle    $surface
+client.unfocused         $text     $base $text  $overlay   $overlay
+client.urgent            $text     $base $text  $love      $love
+client.placeholder       $base     $base $text  $overlay   $overlay
+client.background        $base
 
     ##STOP THEMING WM
 
