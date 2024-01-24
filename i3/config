@@ -65,8 +65,7 @@ bindsym $mod+Shift+9 move container to workspace 9
 #####################################################################################################################
 
 # start dmenu
-bindsym $mod+d exec --no-startup-id rofi -show drun
-
+bindsym $mod+d exec --no-startup-id dmenu_run -p "Run" -nb "#191724" -fn "Mononoki Nerd Font" -nf "#e0def4" -sb "#31748f" -sf "#ebbcba"
 
 #####################################################################################################################
 #################                          how to exit, logoff, suspend, ...                        #################
@@ -268,10 +267,15 @@ bindsym $mod+m exec emacsclient -c -a 'emacs'
 #####################################################################################################################
 #################                          screenshots                                              #################
 #####################################################################################################################
+## Screenshots
+bindsym Print exec --no-startup-id maim "/home/$USER/Pictures/$(date)"
+bindsym $mod+Print exec --no-startup-id maim --window $(xdotool getactivewindow) "/home/$USER/Pictures/$(date)"
+bindsym Shift+Print exec --no-startup-id maim --select "/home/$USER/Pictures/$(date)"
 
-bindsym Print exec maim -s --format png /dev/stdout | xclip -selection clipboard -t image/png -i
-bindsym $mod+Print exec maim --select | tee ~/Pictures/$(date +%s).png | xclip -sel c -t image/png
-
+## Clipboard Screenshots
+bindsym Ctrl+Print exec --no-startup-id maim | xclip -selection clipboard -t image/png
+bindsym Ctrl+$mod+Print exec --no-startup-id maim --window $(xdotool getactivewindow) | xclip -selection clipboard -t image/png
+bindsym Ctrl+Shift+Print exec --no-startup-id maim --select | xclip -selection clipboard -t image/png
 
 
 #####################################################################################################################
@@ -370,7 +374,7 @@ mode "$mode_gaps_outer" {
 #if you want transparency on non-focused windows, ...
 exec_always --no-startup-id picom --config ~/.config/picom/picom.conf
 # exec_always --no-startup-id nitrogen --restore
-exec_always --no-startup-id xrandr --output DVI-I-1 --off --output HDMI-1 --primary --mode 1920x1080 --pos 0x360 --rotate normal --output VGA-1 --mode 1440x900 --pos 1920x0 --rotate left
+exec_always --no-startup-id xrandr --output DVI-I-1 --primary --mode 1920x1080 --pos 0x360 --rotate normal --output DVI-I-2 --mode 1440x900 --pos 1920x0 --rotate left --output HDMI-1 --off 
 #exec_always --no-startup-id ~/.config/i3/scripts/mouse.sh
 exec_always --no-startup-id feh --no-fehbg --bg-fill --randomize $HOME/.wallpapers/rosepine/*
 
@@ -386,24 +390,91 @@ exec_always --no-startup-id feh --no-fehbg --bg-fill --randomize $HOME/.wallpape
 
 
 # set primary pine rose colorscheme colors
-set $base           #191724
-set $surface        #1f1d2e
-set $overlay        #26233a
-set $muted          #6e6a86
-set $subtle         #908caa
-set $text           #e0def4
-set $love           #eb6f92
-set $gold           #f6c177
-set $rose           #ebbcba
-set $pine           #31748f
-set $foam           #9ccfd8
-set $iris           #c4a7e7
-set $highlightlow   #21202e
-set $highlightmed   #403d52
-set $highlighthigh  #524f67
+# set $base           #191724
+# set $surface        #1f1d2e
+# set $overlay        #26233a
+# set $muted          #6e6a86
+# set $subtle         #908caa
+# set $text           #e0def4
+# set $love           #eb6f92
+# set $gold           #f6c177
+# set $rose           #ebbcba
+# set $pine           #31748f
+# set $foam           #9ccfd8
+# set $iris           #c4a7e7
+# set $highlightlow   #21202e
+# set $highlightmed   #403d52
+# set $highlighthigh  #524f67
+
+# set Kanagawa theme
+set $fujiWhite      #DCD7BA
+set $oldWhite 	    #C8C093
+set $sumiInk0 	    #16161D
+set $sumiInk1 	    #1F1F28
+set $sumiInk2 	    #2A2A37
+set $sumiInk3 	    #363646
+set $sumiInk4 	    #54546D
+set $waveBlue1 	    #223249
+set $waveBlue2 	    #2D4F67
+set $winterGreen    #2B3328
+set $winterYellow   #49443C
+set $winterRed 	    #43242B
+set $winterBlue     #252535
+set $autumnGreen    #76946A
+set $autumnRed 	    #C34043
+set $autumnYellow   #DCA561
+set $samuraiRed     #E82424
+set $roninYellow    #FF9E3B
+set $waveAqua1 	    #6A9589
+set $dragonBlue     #658594
+set $fujiGray 	    #727169
+set $springViolet1  #938AA9
+set $oniViolet 	    #957FB8
+set $crystalBlue    #7E9CD8
+set $springViolet2  #9CABCA
+set $springBlue     #7FB4CA
+set $lightBlue 	    #A3D4D5
+set $waveAqua2 	    #7AA89F
+set $springGreen    #98BB6C
+set $boatYellow1    #938056
+set $boatYellow2    #C0A36E
+set $carpYellow     #E6C384
+set $sakuraPink     #D27E99
+set $waveRed 	      #E46876
+set $peachRed 	    #FF5D62
+set $surimiOrange   #FFA066
+set $katanaGray     #717C7C
+
+# catPuccine Macchiato
+set $rosewater #f4dbd6
+set $flamingo  #f0c6c6
+set $pink      #f5bde6
+set $mauve     #c6a0f6
+set $red       #ed8796
+set $maroon    #ee99a0
+set $peach     #f5a97f
+set $yellow    #eed49f
+set $green     #a6da95
+set $teal      #8bd5ca
+set $sky       #91d7e3
+set $sapphire  #7dc4e4
+set $blue      #8aadf4
+set $lavender  #b7bdf8
+set $text      #cad3f5
+set $subtext1  #b8c0e0
+set $subtext0  #a5adcb
+set $overlay2  #939ab7
+set $overlay1  #8087a2
+set $overlay0  #6e738d
+set $surface2  #5b6078
+set $surface1  #494d64
+set $surface0  #363a4f
+set $base      #24273a
+set $mantle    #1e2030
+set $crust     #181926
 
 bar {
-    output HDMI-1
+    # output HDMI-1
    	height 22
 	  position top
     font pango:Mononoki Nerd Font 9
@@ -412,50 +483,51 @@ bar {
     strip_workspace_numbers yes
     separator_symbol "|"
 
-    colors {
-            separator  $highlightmed
-            background $base
-            statusline $rose
-
-       #                    border    backgr. text
-        focused_workspace    $rose    $pine   $base
-        inactive_workspace   $text    $base   $text
-        active_workspace     $overlay $muted  $base
-        urgent_workspace     $love    $love   $base
-    }
+  colors {
+    background         $base
+    statusline         $text
+    focused_statusline $text
+    active_workspace   $base $text $blue
+    focused_separator  $base
+    focused_workspace  $base $base $green
+    active_workspace   $base $base $blue
+    inactive_workspace $base $base $surface1
+    urgent_workspace   $base $base $surface1
+    binding_mode       $base $base $surface1
+  }
 }
 
 bar{
     output VGA-1
    	height 22
 	  position top
-	  status_command MYSCRIPT=~/.config/i3blocks/mybar/scripts/ i3blocks
+	  status_command MYSCRIPT=~/.config/i3blocks/scripts/ i3blocks
     font pango:Mononoki Nerd Font 9
 	  # status_command i3status
     tray_padding 1
     strip_workspace_numbers yes
     separator_symbol "|"
 
-    colors {
-            separator  $highlightmed
-            background $base
-            statusline $rose
 
-       #                    border    backgr. text
-        focused_workspace    $rose    $pine   $base
-        inactive_workspace   $text    $base   $text
-        active_workspace     $overlay $muted  $base
-        urgent_workspace     $love    $love   $base
-    }
-
-
+  colors {
+    background         $base
+    statusline         $text
+    focused_statusline $text
+    active_workspace   $base $text $blue
+    focused_separator  $base
+    focused_workspace  $base $base $green
+    active_workspace   $base $base $blue
+    inactive_workspace $base $base $surface1
+    urgent_workspace   $base $base $surface1
+    binding_mode       $base $base $surface1
+  }
 }
 # target                 title     bg    text   indicator  border
-client.focused           $rose     $base $text  $rose      $rose
-client.focused_inactive  $text     $base $text  $subtle    $surface
-client.unfocused         $text     $base $text  $overlay   $overlay
-client.urgent            $text     $base $text  $love      $love
-client.placeholder       $base     $base $text  $overlay   $overlay
+client.focused           $lavender $base $text  $rosewater $lavender
+client.focused_inactive  $overlay0 $base $text  $rosewater $overlay0
+client.unfocused         $overlay0 $base $text  $rosewater $overlay0
+client.urgent            $peach    $base $peach $overlay0  $peach
+client.placeholder       $overlay0 $base $text  $overlay0  $overlay0
 client.background        $base
 
     ##STOP THEMING WM

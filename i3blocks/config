@@ -26,6 +26,7 @@
 # Each block command defaults to the script name to avoid boilerplate.
 # Change $SCRIPT_DIR to the location of your scripts!
 command=$SCRIPT_DIR/$BLOCK_NAME
+command=$MYSCRIPT/$BLOCK_NAME
 separator_block_width=15
 markup=none
 
@@ -40,17 +41,19 @@ markup=none
 # command=echo "Got clicked with button $button"
 # color=#F79494
 
+
+
 [volume]
 command=$SCRIPT_DIR/volume/volume
 # label=<span color="#f6c177">♪</span>
 label=
 interval=once
 signal=10
-color=#eb6f92
-border=#eb6f92
+color=#ed8796
+border=#ed8796
 border_top=1
 border_right=0
-border_bottom=0
+border_bottom=1
 border_left=0
 #STEP=5%
 
@@ -62,16 +65,16 @@ label=󰍛
 command=$SCRIPT_DIR/memory/memory
 separator=false
 interval=30
-color=#f6c177
-border=#f6c177
+color=#f5a97f
+border=#f5a97f
 border_top=1
 border_right=0
-border_bottom=0
+border_bottom=1
 border_left=0
 
 [memory]
 label=SWAP
-command=$SCRIPT_DIR/swap/swap
+command=$MYSCRIPT/swap/swap
 instance=swap
 separator=false
 interval=30
@@ -85,11 +88,11 @@ interval=30
 label=󰋊
 command=$SCRIPT_DIR/disk/disk
 interval=30
-color=#c4a7e7
-border=#c4a7e7
+color=#c6a0f6
+border=#c6a0f6
 border_top=1
 border_right=0
-border_bottom=0
+border_bottom=1
 border_left=0
 
 # Network interface monitoring
@@ -103,11 +106,11 @@ command=$SCRIPT_DIR/iface/iface
 color=#00FF00
 interval=10
 separator=false
-color=#9ccfd8
-border=#9ccfd8
+color=#8aadf4
+border=#8aadf4
 border_top=1
 border_right=0
-border_bottom=0
+border_bottom=1
 border_left=0
 
 [wifi]
@@ -128,13 +131,13 @@ interval=5
 label=󰻠
 command=$SCRIPT_DIR/cpu_usage/cpu_usage
 interval=10
-min_width=CPU 100.00%
+# min_width=CPU 100.00%
 #separator=false
-color=#f6c177
-border=#f6c177
-border_top=2
+color=#eed49f
+border=#eed49f
+border_top=1
 border_right=0
-border_bottom=0
+border_bottom=1
 border_left=0
 
 # [rofi-wttr]
@@ -153,10 +156,11 @@ command=curl wttr.in/Hamedan?format="%l:+%c+%t+%w\n"
 interval=3600
 label=󰼰
 interval=1
-border=#ffb86c
+color=#f0c6c6
+border=#f0c6c6
 border_top=1
 border_right=0
-border_bottom=0
+border_bottom=1
 border_left=0
 
 [load_average]
@@ -174,14 +178,14 @@ interval=30
 # Date Time
 #
 [time]
-command=date '+%Y-%m-%d %H:%M:%S'
+command=date '+%Y-%m-%d [%a] %H:%M:%S'
 # command=$SCRIPT_DIR/time/time
 interval=5
 color=#e0def4
 border=#e0def4
 border_top=1
 border_right=0
-border_bottom=0
+border_bottom=1
 border_left=0
 
 #interval=0
